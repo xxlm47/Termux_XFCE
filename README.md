@@ -96,3 +96,30 @@ Once it connects run this command
 You can also run adb shell from termux directly by following the guide found in this video
 
 [https://www.youtube.com/watch?v=BHc7uvX34bM](https://www.youtube.com/watch?v=BHc7uvX34bM)
+
+
+## Debian Lite X11 — for 3 GB ARM64 tablets
+
+If the full XFCE setup is too heavy for a low-memory Android tablet, use the new minimal Debian GUI:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/xxlm47/Termux_XFCE/main/debian-lite-x11.sh -o debian-lite-x11.sh
+chmod +x debian-lite-x11.sh
+./debian-lite-x11.sh
+```
+
+Then launch it with:
+
+```bash
+debian-lite
+```
+
+Stop it with:
+
+```bash
+debian-lite-stop
+```
+
+This variant uses **Debian + LXDE/Openbox + Termux:X11** and deliberately avoids XFCE goodies, full browsers, systemd, Conky, large font packs, and a Debian-side audio server. It is intended to leave substantially more RAM available for the applications you actually use.
+
+Termux:X11's official documentation requires `--shared-tmp` for proot environments and documents the `-legacy-drawing` fallback for black-screen devices. The launcher follows that model.
