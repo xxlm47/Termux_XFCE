@@ -8,7 +8,7 @@ USER_NAME="${1:-xxlm47}"
 say(){ printf '\n==> %s\n' "$*"; }
 die(){ echo "ERROR: $*" >&2; exit 1; }
 
-[ "$(...)" = "aarch64" ] || die "ARM64/aarch64 required."
+[ "$(uname -m)" = "aarch64" ] || die "ARM64/aarch64 required."
 command -v pkg >/dev/null || die "Run this in Termux."
 
 say "Installing minimal Termux/X11 host"
@@ -28,7 +28,6 @@ USER_NAME="${USER_NAME:-xxlm47}"
 
 apt-get update
 apt-get upgrade -y
-
 apt-get install -y --no-install-recommends \
   lxde-core lxsession lxpanel pcmanfm openbox dbus-x11 x11-xserver-utils \
   xterm mousepad sudo ca-certificates curl wget git procps psmisc nano htop
